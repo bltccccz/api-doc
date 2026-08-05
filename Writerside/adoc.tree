@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="adoc" name="API Docs" start-page="index.md">
+
+    <toc-element topic="index.md" toc-title="接口文档"/>
+    <toc-element topic="assigned-index.md" toc-title="指派采购">
+        <toc-element topic="assigned-create.md" toc-title="创建指派"/>
+        <toc-element topic="order_list.md" toc-title="订单列表"/>
+    </toc-element>
+
+</instance-profile>

@@ -1,0 +1,70 @@
+openapi: "3.1.0"
+info:
+  title: "ydx_yudao_vue_pro API"
+  description: "ydx_yudao_vue_pro API"
+  version: "1.0.0"
+servers:
+- url: "https://ydx_yudao_vue_pro"
+paths:
+  /procurement/assigned/assigned_orders:
+    get:
+      summary: "GET procurement/assigned/assigned_orders"
+      operationId: "getAssignedOrders"
+      parameters:
+          - name: "type"
+            in: "query"
+            description: "查询范围"
+            required: false
+            schema:
+                type: "number"
+          - name: "orderNo"
+            in: "query"
+            description: "单号"
+            required: true
+            schema:
+                type: "string"
+          - name: "其他分页相关不变"
+            in: "query"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ProcurementAssignedOrderVo"
+components:
+  schemas:
+    ProcurementAssignedOrderVo:
+      type: "object"
+      properties:
+        "no":
+          type: "string"
+          nullable: true
+          description: "采购单号"
+        purchasers:
+          type: "array"
+          nullable: true
+          description: "负责采购的人员"
+          items:
+            type: "string"
+        creatorName:
+          type: "string"
+          nullable: true
+          description: "创建人"
+        createTime:
+          type: "string"
+          nullable: true
+          description: "创建时间"
+        statusDesc:
+          type: "string"
+          nullable: true
+          description: "状态描述"
+        status:
+          type: "integer"
+          format: "int32"
+          nullable: true
+          description: "状态值"
+        normal:
+          type: "boolean"
+          nullable: true
+          description: "是否正常带锯"

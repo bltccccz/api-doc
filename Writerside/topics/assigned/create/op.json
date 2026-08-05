@@ -1,0 +1,47 @@
+{
+  "url": "/procurement/assigned/create",
+  "method": "POST",
+  "apiTitle": "新建指派任务",
+  "body": {
+    "name": "body",
+    "cType": "object",
+    "type": "object",
+    "description": "",
+    "required": false,
+    "example": "",
+    "content": [
+      {
+        "name": "sourceType",
+        "type": "string",
+        "description": "来源类型1新建，2合单",
+        "required": false
+      },
+      {
+        "name": "autoSubmit",
+        "type": "string",
+        "description": "自动提交",
+        "required": false
+      },
+      {
+        "name": "details",
+        "cType": "array",
+        "description": "",
+        "required": false,
+        "content": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "被指派人员id",
+            "required": false
+          },
+          {
+            "name": "count",
+            "type": "number",
+            "description": "被指派人员采购数量",
+            "required": false
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Generated API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/procurement/assigned/create": {
+            "post": {
+                "summary": "新建指派任务",
+                "operationId": "post__procurement_assigned_create",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "sourceType": {
+                                        "type": "string",
+                                        "description": "来源类型1新建，2合单"
+                                    },
+                                    "autoSubmit": {
+                                        "type": "string",
+                                        "description": "自动提交"
+                                    },
+                                    "details": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "description": "被指派人员id"
+                                                },
+                                                "count": {
+                                                    "type": "number",
+                                                    "description": "被指派人员采购数量"
+                                                }
+                                            }
+                                        },
+                                        "description": "指派细节"
+                                    }
+                                },
+                                "description": ""
+                            },
+                            "example": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "新建指派任务Request": {
+                "type": "object",
+                "properties": {
+                    "sourceType": {
+                        "type": "string"
+                    },
+                    "autoSubmit": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "count": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
