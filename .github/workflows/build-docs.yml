@@ -45,7 +45,7 @@ jobs:
         uses: JetBrains/writerside-github-action@v4
         with:
           instance: ${{ env.INSTANCE }}
-          # 删除 docker-version，因为没有定义 DOCKER_VERSION
+          docker-version: ${{ env.DOCKER_VERSION }}
 
       - name: Save artifact with build results
         uses: actions/upload-artifact@v4
@@ -56,22 +56,4 @@ jobs:
             artifacts/report.json
             artifacts/${{ steps.define-ids.outputs.algolia_artifact }}
           retention-days: 7
-
-      # ========== 新增：解压构建结果 ==========
-      - name: Extract build artifacts
-        run: |
-          mkdir -p deploy
-          echo "正在解压: artifacts/${{ steps.define-ids.outputs.artifact }}"
-          unzip -q artifacts/${{ steps.define-ids.outputs.artifact }} -d deploy/
-          echo "解压完成，目录结构:"
-          ls -la deploy/
-
-      # ========== 新增：部署到 GitHub Pages ==========
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./deploy
-          keep_files: false              # 🔑 覆盖旧文件
-          force_orphan: true             # 🔑 保持分支干净，无历史污染
-          publish_branch: gh-pages       # 🔑 部署到这个分支（GitHub Pages 默认分支）
+          keep_files: false
